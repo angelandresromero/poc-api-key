@@ -1,0 +1,27 @@
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - "./:/app"
+    ports:
+      - '4001:3000'
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+    entrypoint: [ "/app/entrypoint.sh" ]
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+volumes:
+  postgres-data:
