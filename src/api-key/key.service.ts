@@ -37,6 +37,7 @@ export class KeyService {
   }
 
   async validate(rawKey: string): Promise<boolean> {
+    console.log(rawKey)
     const hashedKey = this.hashApiKey(rawKey);
     const keyEntity = await this.keyRepository.findOne({ where: { key: hashedKey } });
     

@@ -6,7 +6,8 @@ import { KeyController } from "./key.controller";
 
 @Module({
     imports: [TypeOrmModule.forFeature([KeyEntity])],
+    controllers: [KeyController],
     providers: [KeyService],
-    controllers: [KeyController]
+    exports: [KeyService],
 })
 export class KeyModule {}
