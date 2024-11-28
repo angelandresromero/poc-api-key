@@ -8,7 +8,8 @@ build:
 	@docker compose build
 
 bash:
-	@docker exec -it app-server-1 bash
+	@docker exec -it $(shell docker compose ps -q server) bash
 
 psql:
-	@docker exec -it app-postgres-1 psql postgres postgres
+	@docker exec -it $(shell docker compose ps -q postgres) psql -U postgres -d postgres
+	
