@@ -11,4 +11,4 @@ bash:
 	@docker exec -it app-server-1 bash
 
 psql:
-	@docker exec app-postgres-1 psql postgres postgres
+	@docker exec -it app-postgres-1 psql postgres postgres
