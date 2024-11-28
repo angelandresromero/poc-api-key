@@ -4,7 +4,7 @@ import * as passport from 'passport';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // app.useGlobalGuards(passport.initialize());
+  app.enableCors(); 
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

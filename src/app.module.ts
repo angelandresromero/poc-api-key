@@ -1,11 +1,10 @@
-import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { KeyModule } from './api-key/key.module';
 
 import { AuthModule } from './auth/auth.module';
-import { AuthMiddleware } from './middlewares/api-key.middleware';
 
 @Module({
   imports: [
@@ -24,8 +23,4 @@ import { AuthMiddleware } from './middlewares/api-key.middleware';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).forRoutes(''); // Apply middleware to all routes
-  }
-}
+export class AppModule {}

@@ -24,12 +24,4 @@ export class KeyController {
     ){
         return this.keyService.revoke(input.id);
     }
-
-
-    @Post('validate') // this shouldnt be able to be called from the outside
-    async validate(
-      @Query('key') key: string
-    ){
-        return this.keyService.validate(key);
-    }
 }
