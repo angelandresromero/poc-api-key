@@ -12,12 +12,10 @@ export class ApiKeyStrategy extends PassportStrategy(HeaderAPIKeyStrategy) {
              * Same should be done on the jwt strategy to bypass the jwt check if an api key is received
              */
             const isjJwt = apiKey.startsWith('Bearer eyJh') 
-            console.log({context: 'strategy', isjJwt, apiKey})
             if (isjJwt) {
                 return done(true);
             }
             const checkKey = await apiKeyService.validate(apiKey)
-            console.log({context: 'strategy', apiKey, checkKey})
             if (!checkKey) {
                 return done(false);
             }

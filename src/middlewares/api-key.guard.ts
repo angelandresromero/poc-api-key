@@ -11,7 +11,6 @@ export class ApiKeyGuard implements CanActivate {
       passport.authenticate('headerapikey', {
         session: false }, 
         value => {
-        console.log({context: 'decorator', value})
         if (!value) {
           return reject(new UnauthorizedException('Invalid API Key'));
         }

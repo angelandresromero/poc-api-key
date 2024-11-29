@@ -15,13 +15,13 @@ export class KeyEntity {
   @Column({default: false})
   revoked: boolean;
 
-  @Column()
+  @Column({name: 'user_id'})
   userId: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column({ name: 'expiration_date', type: 'timestamp', nullable: true })
   expirationDate?: Date;
 
   // @Column({ type: 'simple-array', nullable: true })
